@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
 
-evn:
+env:
   CI: true
 
 jobs:
@@ -19,11 +19,12 @@ jobs:
             node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
+
       - name: Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.noda-version }}
+          node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: Setup
         run: make setup
@@ -35,4 +36,4 @@ jobs:
         run: make test
 
       - name: My action
-      - uses: hexlet-components/hello-from-hexlet-action
+        uses: hexlet-components/hello-from-hexlet-action
