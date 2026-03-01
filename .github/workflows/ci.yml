@@ -6,13 +6,25 @@ on:
   pull_request:
     branches: [main]
 
+evn:
+  CI: true
+
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
+    strategy:
+       matrix:
+            node-version: [18.x]
 
+    steps:
+      - uses: actions/checkout@v6
+      - name: Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.noda-version }}
+          cache: 'npm'
       - name: Setup
         run: make setup
 
@@ -21,3 +33,6 @@ jobs:
 
       - name: Test
         run: make test
+
+      - name: My action
+      - uses: hexlet-components/hello-from-hexlet-action
