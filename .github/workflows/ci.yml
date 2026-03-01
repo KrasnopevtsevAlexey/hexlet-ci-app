@@ -8,16 +8,16 @@ on:
 
 jobs:
   build:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
-      -uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      -name: Setup
-       run: make setup
+      - name: Setup
+        run: make setup
 
-      -name: Linter
-       run: make lint
+      - name: Linter
+        run: make lint
 
-      -name: Test
-       run: make test
+      - name: Test
+        run: make test
