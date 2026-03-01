@@ -36,4 +36,4 @@ jobs:
         run: make test
 
       - name: My action
-        uses: hexlet-components/hello-from-hexlet-action
+        uses: hexlet-components/hello-from-hexlet-action@release
